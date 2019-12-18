@@ -30,8 +30,12 @@ class CustomerList extends Component {
   render () {
     const customers = this.state.allCustomers.map((oneCust) => {
       return(
-      <p>{oneCust.id}. {oneCust.name}, phone: {oneCust.phone}, account credit: {oneCust.account_credit}</p>
-        )
+      <div>
+      <p>{oneCust.id}. {oneCust.name}</p>
+      <ul>phone: {oneCust.phone}</ul>
+      <ul>account credit: {oneCust.account_credit}</ul>
+      </div>
+      )
     })
 
     return (

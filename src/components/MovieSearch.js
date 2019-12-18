@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 
 class MovieSearch extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       resultList: [],
@@ -32,6 +32,31 @@ class MovieSearch extends Component {
     });
   };
 
+  addMovieOnSubmit = (movie) => {
+    console.log(movie)
+    axios.post('http://localhost:3000/movies', movie)
+      .then((response) => {
+        console.log("***************")
+        console.log(response)
+        const updatedData = this.state.movieList
+        updatedData.push(response.data);
+        this.setState({
+          movieList: updatedData,
+          error: '',
+        });
+
+      })
+      .catch(() => {
+        this.setState({error: 'Not added. Why?'});
+      })
+    // this.props.addMovieCallback({
+    //   title: this.title,
+    //   about: this.about,
+    //   location: this.location,
+    //   images: [this.image]
+    // });
+  };
+
   searchQuery = () => {
 
     axios.get('http://localhost:3000/movies?query=' + this.state.searchTerm)
@@ -40,8 +65,6 @@ class MovieSearch extends Component {
         this.setState({
           resultList: response.data
         });
-        console.log('******************')
-        console.log(this.state.resultList)
       })
       .catch((error) => {
         this.setState({
@@ -51,11 +74,26 @@ class MovieSearch extends Component {
   }
 
 
+  //<RentalLibrary movies={this.updatedData}/>
 
   render () {
     const searchResults = this.state.resultList.map((search) => {
       return(
-        <p>{search.title}</p>
+        <ul>
+          <img src={search.image_url} alt={search.title} />
+          <p>
+            <input
+              onClick={()=> {this.addMovieOnSubmit(search)}}
+              type="submit"
+              name="submit"
+              value="Add Movie to Inventory"
+              className="add-movie"
+            />
+          </p>
+          <p>{search.title}</p>
+          <p>{search.overview}</p>
+        </ul>
+
       )
     })
     return (
@@ -81,7 +119,6 @@ class MovieSearch extends Component {
           />
         </section>
         <section>
-
           {searchResults}
         </section>
       </section>
