@@ -33,28 +33,20 @@ class MovieSearch extends Component {
   };
 
   addMovieOnSubmit = (movie) => {
-    console.log(movie)
-    axios.post('http://localhost:3000/movies', movie)
-      .then((response) => {
-        console.log("***************")
-        console.log(response)
-        const updatedData = this.state.movieList
-        updatedData.push(response.data);
-        this.setState({
-          movieList: updatedData,
-          error: '',
-        });
-
-      })
-      .catch(() => {
-        this.setState({error: 'Not added. Why?'});
-      })
-    // this.props.addMovieCallback({
-    //   title: this.title,
-    //   about: this.about,
-    //   location: this.location,
-    //   images: [this.image]
-    // });
+    // console.log(movie)
+    // console.log("*******")
+    // console.log(this.state.resultList)
+    // if (this.state.movieList.find(result => result.external_id === movie.external_id)) {
+    //   return ("Already exist in movie library")
+    // } else {
+    //     return(
+        axios.post('http://localhost:3000/movies', movie)
+        .catch(() => {
+          console.log("ERROR state")
+          this.setState({error: 'Not added. Why?'});
+          })
+        // )
+    // }
   };
 
   searchQuery = () => {

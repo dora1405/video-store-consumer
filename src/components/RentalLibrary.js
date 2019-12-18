@@ -30,19 +30,6 @@ class RentalLibrary extends Component {
       });
   }
 
-  addMovie = () => {
-    // console.log(movie);
-    // if movie exist/.include? .find? in rental library increase inventory
-    // List.find(element => element.external_id == movie.external_id)
-    // if movie not in rental library, add it in
-
-  }
-
-//   <MovieSearch
-//   updatedData={this.state.movieList}
-// />
-
-
 
   
   render () {
