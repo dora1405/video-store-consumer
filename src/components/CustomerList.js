@@ -28,16 +28,14 @@ class CustomerList extends Component {
   }
 
   render () {
-
-    console.log(this.state.allCustomers)
-    const test = this.state.allCustomers.map((oneCust) => {
+    const customers = this.state.allCustomers.map((oneCust) => {
       return(
       <p>{oneCust.id}. {oneCust.name}, phone: {oneCust.phone}, account credit: {oneCust.account_credit}</p>
         )
     })
 
     return (
-      <div>{test}</div>
+      <div>{customers}</div>
     )
   }
 }
