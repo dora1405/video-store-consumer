@@ -33,19 +33,36 @@ class MovieSearch extends Component {
   };
 
   addMovieOnSubmit = (movie) => {
-    // console.log(movie)
-    // console.log("*******")
-    // console.log(this.state.resultList)
+    console.log(movie)
+    console.log("*******")
+    
+    axios.get('http://localhost:3000')
+    .then((response) => {
+
+      console.log(response.data)
+
+      if (response.data.find(listItem => listItem.external_id === movie.external_id)) {
+
+        console.log("Already exists in movie library")
+
+      } else {
+        return(
+          axios.post('http://localhost:3000/movies', movie)
+          .catch(() => {
+            console.log("ERROR state")
+            this.setState({error: 'Not added. Why?'});
+            })
+          )
+      }
+    })
+    .catch(() => {
+      return ('nope!')
+    });
+
     // if (this.state.movieList.find(result => result.external_id === movie.external_id)) {
     //   return ("Already exist in movie library")
     // } else {
-    //     return(
-        axios.post('http://localhost:3000/movies', movie)
-        .catch(() => {
-          console.log("ERROR state")
-          this.setState({error: 'Not added. Why?'});
-          })
-        // )
+
     // }
   };
 
