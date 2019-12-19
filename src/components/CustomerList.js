@@ -31,9 +31,19 @@ class CustomerList extends Component {
     const customers = this.state.allCustomers.map((oneCust) => {
       return(
       <div>
-      <p>{oneCust.id}. {oneCust.name}</p>
-      <ul>phone: {oneCust.phone}</ul>
-      <ul>account credit: {oneCust.account_credit}</ul>
+        <p>{oneCust.id}. {oneCust.name}</p>
+        <ul>phone: {oneCust.phone}</ul>
+        <ul>account credit: {oneCust.account_credit}</ul>
+        <ul>
+          <input
+            onClick={()=> 
+              {this.props.selectCustomerCallback(oneCust)}}
+            type="submit"
+            name="submit"
+            value="Select Customer"
+            className="customer-rental"
+          />
+        </ul>
       </div>
       )
     })

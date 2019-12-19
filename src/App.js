@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,9 +8,38 @@ import {
 import CustomerList from './components/CustomerList'
 import MovieSearch from './components/MovieSearch'
 import RentalLibrary from './components/RentalLibrary'
+import axios from "axios";
 
-export default function App() {
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      selectedCustomer: undefined,
+      selectedMovie: undefined,
+      error: '',
+    };
+  }
+
+  selectRental = (rentalId) => {
+    this.setState({
+      selectedMovie: rentalId.title
+    })
+      
+  }
+
+
+  render(){
+    const Home = () => {
+      return (
+        <h2>Home</h2>
+    
+      );
+    }
+
+
   return (
+    <div>
     <Router>
       <div>
         <nav>
@@ -27,6 +56,7 @@ export default function App() {
             <li>
               <Link to="/customers">Customer Page</Link>
             </li>
+            <li>{this.state.selectedMovie}</li>
           </ul>
         </nav>
 
@@ -37,7 +67,9 @@ export default function App() {
             <MovieSearch />
           </Route>
           <Route path="/library">
-            <RentalLibrary />
+            <RentalLibrary
+            selectRentalCallback={this.selectRental}
+            />
           </Route>
           <Route path="/customers">
             <CustomerList />
@@ -48,12 +80,11 @@ export default function App() {
         </Switch>
       </div>
     </Router>
+    <p>hi</p>
+
+    </div>
   );
 }
-
-function Home() {
-  return (
-    <h2>Home</h2>
-
-  );
 }
+
+export default App;

@@ -10,8 +10,6 @@ class RentalLibrary extends Component {
 
     this.state = {
       movieList: [],
-      selectedMovie: '',
-      error: '',
     };
   }
 
@@ -34,9 +32,21 @@ class RentalLibrary extends Component {
   
   render () {
     const movies = this.state.movieList.map((movie) => {
+      console.log("*********")
+      console.log(this.props)
       return(
         <ul>
           <img src={movie.image_url} alt={movie.title} />
+          <p>
+            <input
+              onClick={()=> 
+                {this.props.selectRentalCallback(movie)}}
+              type="submit"
+              name="submit"
+              value="Select Movie Rental"
+              className="rent-movie"
+            />
+          </p>
           <p>{movie.title}</p>
           <p>{movie.overview}</p>
         </ul>
