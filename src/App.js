@@ -21,13 +21,19 @@ class App extends Component {
     };
   }
 
-  selectRental = (rentalId) => {
+  selectRental = (rental) => {
     this.setState({
-      selectedMovie: rentalId.title
+      selectedMovie: rental.title
     })
       
   }
 
+  selectCustomer = (customer) => {
+    this.setState({
+      selectedCustomer: customer.name
+    })
+      
+  }
 
   render(){
     const Home = () => {
@@ -56,8 +62,10 @@ class App extends Component {
             <li>
               <Link to="/customers">Customer Page</Link>
             </li>
-            <li>{this.state.selectedMovie}</li>
           </ul>
+          <p>Selected Movie: {this.state.selectedMovie}</p>
+          <p>Selected Customer: {this.state.selectedCustomer}</p>
+
         </nav>
 
         {/* A <Switch> looks through its children <Route>s and
@@ -72,7 +80,9 @@ class App extends Component {
             />
           </Route>
           <Route path="/customers">
-            <CustomerList />
+            <CustomerList 
+            selectCustomerCallback={this.selectCustomer}
+            />
           </Route>
           <Route path="/">
             <Home />
