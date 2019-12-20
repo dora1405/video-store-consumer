@@ -28,9 +28,39 @@
 }
 
 .nav-list {
+  width: 91vw;
+  /* height: 100vh; */
   list-style: none;
+  display: flex;
+  justify-content: space-between;
+  background-color: #1030ad;
+
 }
 
 .nav-link {
   text-decoration: none;
+  color: #FFCC00;
+}
+.home-page {
+  width: 100vw;
+  height: 100vh;
+}
+.home-body {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("https://g.foolcdn.com/editorial/images/83085/brokenblockbuster.JPG");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.header {
+  width: 91vw;
+  text-align: center;
+  background-color: gray;
+  color: #81FF14;
+}
+
+.title {
+  color: #FFCC00;
+
 }

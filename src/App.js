@@ -88,11 +88,19 @@ class App extends Component {
 
     const Home = () => {
       return (
-        <section>
-          <h2>Welcome to the Video Store</h2>
+        <section className="home-page">
+          <section className='header'>
+          <h2 className='title'>Welcome to BlockRuster</h2>
+          <p>Zombie Apocalypse happened?</p>
+          <p>Netflix, Hulu, Amazon Prime defunct?</p>
+          <p>Are we your last resort?</p>
+          <p className='title'>Good new! We're still here for you!</p>
+          </section>
+          <section className="home-body">
           <p>Selected Movie: {this.state.selectedMovie}</p>
           <p>Selected Customer: {this.state.selectedCustomer.name}</p>
           {rentalButton}
+          </section>
         </section>
         
     
