@@ -27,13 +27,15 @@ class CustomerList extends Component {
   }
 
   render () {
+
     const customers = this.state.allCustomers.map((oneCust) => {
       return(
       <div>
         <p>{oneCust.id}. {oneCust.name}</p>
         <ul>phone: {oneCust.phone}</ul>
         <ul>account credit: {oneCust.account_credit}</ul>
-        <ul>movies checked out: {oneCust.movies_checked_out_count}</ul>
+        <ul>movies checked out: {oneCust.movie_names};</ul>
+
         <ul>
           <input
             onClick={()=> 
