@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {
+  Card, Container, Col, Row, CardImg, CardText, CardBody,
+  CardTitle, CardSubtitle, Button
+} from 'reactstrap';
+import './RentalLibrary.css'
 
 class MovieSearch extends Component {
   constructor(props) {
@@ -75,9 +80,11 @@ class MovieSearch extends Component {
   render () {
     const searchResults = this.state.resultList.map((search) => {
       return(
-        <ul>
-          <img src={search.image_url} alt={search.title} />
-          <p>
+        <Card className="d-flex flex-column card-class flex-wrap">
+          <CardTitle className="card-title-class">{search.title}</CardTitle>
+          <img className="image-class" src={search.image_url} alt={search.title} />
+          <CardBody>{search.overview}</CardBody>
+          <p className="button-class">
             <input
               onClick={()=> {this.addMovieOnSubmit(search)}}
               type="submit"
@@ -86,9 +93,7 @@ class MovieSearch extends Component {
               className="add-movie"
             />
           </p>
-          <p>{search.title}</p>
-          <p>{search.overview}</p>
-        </ul>
+        </Card>
 
       )
     })
