@@ -39,10 +39,8 @@ class App extends Component {
 
   checkout = () => {
     let movieTitle = this.state.selectedMovie;
-    console.log(movieTitle)
     let dueDate = new Date();
     dueDate.setDate(dueDate.getDate()+7);
-    console.log(dueDate)
     let params = {
       customer_id: this.state.selectedCustomer.id,
       due_date: dueDate.toString()
@@ -62,9 +60,28 @@ class App extends Component {
 
 
   render(){
+    let rentalButton;
+    if (this.state.selectedCustomer && this.state.selectedMovie) {
+      rentalButton = <input
+      onClick={this.checkout}
+      type="submit"
+      name="submit"
+      value="Add Rental"
+      className="add-rental"
+    />
+    } else {
+      rentalButton = "Select one movie and one customer to make a rental"
+    }
+
     const Home = () => {
       return (
-        <h2>Home</h2>
+        <section>
+          <h2>Home</h2>
+          <p>Selected Movie: {this.state.selectedMovie}</p>
+          <p>Selected Customer: {this.state.selectedCustomer.name}</p>
+          {rentalButton}
+        </section>
+        
     
       );
     }
@@ -92,13 +109,13 @@ class App extends Component {
           <section>
             <p>Selected Movie: {this.state.selectedMovie}</p>
             <p>Selected Customer: {this.state.selectedCustomer.name}</p>
-            <input
+            {/* <input
               onClick={this.checkout}
               type="submit"
               name="submit"
               value="Add Rental"
               className="add-rental"
-            />
+            /> */}
           </section>
         </nav>
         <Switch>
@@ -121,7 +138,6 @@ class App extends Component {
         </Switch>
       </div>
     </Router>
-    <p>hi</p>
 
     </div>
   );
