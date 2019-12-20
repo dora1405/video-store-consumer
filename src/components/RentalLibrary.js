@@ -1,5 +1,10 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {
+  Card, CardImg, CardText, CardBody,
+  CardTitle, CardSubtitle, Button
+} from 'reactstrap';
+import './RentalLibrary.css'
 
 
 class RentalLibrary extends Component {
@@ -32,9 +37,11 @@ class RentalLibrary extends Component {
     const movies = this.state.movieList.map((movie) => {
 
       return(
-        <ul>
-          <img src={movie.image_url} alt={movie.title} />
-          <p>
+        <Card className="d-flex flex-column card-class">
+          <CardTitle className="card-title-class">{movie.title}</CardTitle>
+          <img className="image-class" width="100%" src={movie.image_url} alt={movie.title} />
+          <CardBody>{movie.overview}</CardBody>
+          <p className="button-class">
             <input
               onClick={()=> 
                 {this.props.selectRentalCallback(movie)}}
@@ -44,9 +51,7 @@ class RentalLibrary extends Component {
               className="rent-movie"
             />
           </p>
-          <p>{movie.title}</p>
-          <p>{movie.overview}</p>
-        </ul>
+        </Card>
       )
     })
 
