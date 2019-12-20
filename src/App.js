@@ -11,18 +11,7 @@ import RentalLibrary from './components/RentalLibrary'
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
-  Collapse,
   Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  NavbarText
 } from 'reactstrap';
 import './App.css'
 

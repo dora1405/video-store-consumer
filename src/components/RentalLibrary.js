@@ -34,10 +34,10 @@ class RentalLibrary extends Component {
 
   
   render () {
-    const movies = this.state.movieList.map((movie) => {
+    const movies = this.state.movieList.map((movie, i) => {
 
       return(
-        <Container className="flex-wrap">
+        <Container key={i}className="flex-wrap">
           <Card className="d-flex flex-column card-class flex-wrap">
             <CardTitle className="card-title-class">{movie.title}</CardTitle>
             <img className="image-class" width="100%" src={movie.image_url} alt={movie.title} />
