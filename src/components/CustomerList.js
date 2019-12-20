@@ -33,6 +33,7 @@ class CustomerList extends Component {
         <p>{oneCust.id}. {oneCust.name}</p>
         <ul>phone: {oneCust.phone}</ul>
         <ul>account credit: {oneCust.account_credit}</ul>
+        <ul>movies checked out: {oneCust.movies_checked_out_count}</ul>
         <ul>
           <input
             onClick={()=> 
