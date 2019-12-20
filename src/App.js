@@ -49,9 +49,6 @@ class App extends Component {
     }
 
     axios.post(`http://localhost:3000/rentals/${movieTitle}/check-out`, params)
-    .then((response) => {
-      console.log(response.data)
-    })
     .catch(() => {
       console.log("No rental posted")
     })
@@ -62,20 +59,6 @@ class App extends Component {
     })
 
   }
-
-
-  // checkout function
-  // movie title
-  // customer id
-  // feed into axios.post url
-  // params for due date
-  // new Date()
-  // set due date to +7
-  // set due date to string for params in axios.post after url
-
-  // onClick for checkout
-  // if else to show button
-
 
 
   render(){
@@ -118,9 +101,6 @@ class App extends Component {
             />
           </section>
         </nav>
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/search">
             <MovieSearch />

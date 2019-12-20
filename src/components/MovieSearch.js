@@ -46,21 +46,15 @@ class MovieSearch extends Component {
         return(
           axios.post('http://localhost:3000/movies', movie)
           .catch(() => {
-            console.log("ERROR state")
-            this.setState({error: 'Not added. Why?'});
+            console.log("Can't get movie")
             })
           )
       }
     })
     .catch(() => {
-      return ('nope!')
+      return ('Movie not added')
     });
 
-    // if (this.state.movieList.find(result => result.external_id === movie.external_id)) {
-    //   return ("Already exist in movie library")
-    // } else {
-
-    // }
   };
 
   searchQuery = () => {
@@ -78,9 +72,6 @@ class MovieSearch extends Component {
         })
       })
   }
-
-
-  //<RentalLibrary movies={this.updatedData}/>
 
   render () {
     const searchResults = this.state.resultList.map((search) => {
