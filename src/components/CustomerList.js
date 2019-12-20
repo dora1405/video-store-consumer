@@ -32,9 +32,9 @@ class CustomerList extends Component {
       return(
       <div>
         <p>{oneCust.id}. {oneCust.name}</p>
-        <ul>phone: {oneCust.phone}</ul>
-        <ul>account credit: {oneCust.account_credit}</ul>
-        <ul>movies checked out: {oneCust.movie_names};</ul>
+        <ul>Mobil: {oneCust.phone}</ul>
+        <ul>Account Credit: {oneCust.account_credit}</ul>
+        <ul>Movies Checked Out: {oneCust.movie_names}</ul>
 
         <ul>
           <input
