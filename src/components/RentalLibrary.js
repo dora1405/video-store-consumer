@@ -32,8 +32,7 @@ class RentalLibrary extends Component {
   
   render () {
     const movies = this.state.movieList.map((movie) => {
-      console.log("*********")
-      console.log(this.props)
+
       return(
         <ul>
           <img src={movie.image_url} alt={movie.title} />

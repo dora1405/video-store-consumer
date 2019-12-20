@@ -8,15 +8,17 @@ import {
 import CustomerList from './components/CustomerList'
 import MovieSearch from './components/MovieSearch'
 import RentalLibrary from './components/RentalLibrary'
-import axios from "axios";
+import axios from 'axios';
+
+
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      selectedCustomer: undefined,
-      selectedMovie: undefined,
+      selectedCustomer: '',
+      selectedMovie: '',
       error: '',
     };
   }
@@ -30,10 +32,51 @@ class App extends Component {
 
   selectCustomer = (customer) => {
     this.setState({
-      selectedCustomer: customer.name
+      selectedCustomer: customer
     })
       
   }
+
+  checkout = () => {
+    let movieTitle = this.state.selectedMovie;
+    console.log(movieTitle)
+    let dueDate = new Date();
+    dueDate.setDate(dueDate.getDate()+7);
+    console.log(dueDate)
+    let params = {
+      customer_id: this.state.selectedCustomer.id,
+      due_date: dueDate.toString()
+    }
+
+    axios.post(`http://localhost:3000/rentals/${movieTitle}/check-out`, params)
+    .then((response) => {
+      console.log(response.data)
+    })
+    .catch(() => {
+      console.log("No rental posted")
+    })
+
+    this.setState({
+      selectedMovie: '',
+      selectedCustomer: '',
+    })
+
+  }
+
+
+  // checkout function
+  // movie title
+  // customer id
+  // feed into axios.post url
+  // params for due date
+  // new Date()
+  // set due date to +7
+  // set due date to string for params in axios.post after url
+
+  // onClick for checkout
+  // if else to show button
+
+
 
   render(){
     const Home = () => {
@@ -63,9 +106,17 @@ class App extends Component {
               <Link to="/customers">Customer Page</Link>
             </li>
           </ul>
-          <p>Selected Movie: {this.state.selectedMovie}</p>
-          <p>Selected Customer: {this.state.selectedCustomer}</p>
-
+          <section>
+            <p>Selected Movie: {this.state.selectedMovie}</p>
+            <p>Selected Customer: {this.state.selectedCustomer.name}</p>
+            <input
+              onClick={this.checkout}
+              type="submit"
+              name="submit"
+              value="Add Rental"
+              className="add-rental"
+            />
+          </section>
         </nav>
 
         {/* A <Switch> looks through its children <Route>s and

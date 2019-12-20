@@ -33,13 +33,10 @@ class MovieSearch extends Component {
   };
 
   addMovieOnSubmit = (movie) => {
-    console.log(movie)
-    console.log("*******")
     
     axios.get('http://localhost:3000')
     .then((response) => {
 
-      console.log(response.data)
 
       if (response.data.find(listItem => listItem.external_id === movie.external_id)) {
 
