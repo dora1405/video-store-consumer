@@ -90,11 +90,11 @@ class App extends Component {
       return (
         <section className="home-page">
           <section className='header'>
-          <h2 className='title'>Welcome to BlockRuster</h2>
+          <h1 className='title'>Welcome to BlockRuster</h1>
           <p>Zombie Apocalypse happened?</p>
           <p>Netflix, Hulu, Amazon Prime defunct?</p>
           <p>Are we your last resort?</p>
-          <p className='title'>Good new! We're still here for you!</p>
+          <p className='title good-news'>Good news! We're still here for you!</p>
           </section>
           <section className="home-body">
           <p>Selected Movie: {this.state.selectedMovie}</p>
