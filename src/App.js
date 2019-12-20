@@ -9,6 +9,8 @@ import CustomerList from './components/CustomerList'
 import MovieSearch from './components/MovieSearch'
 import RentalLibrary from './components/RentalLibrary'
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
 
 
 
@@ -76,7 +78,7 @@ class App extends Component {
     const Home = () => {
       return (
         <section>
-          <h2>Home</h2>
+          <h2>Welcome to the Video Store</h2>
           <p>Selected Movie: {this.state.selectedMovie}</p>
           <p>Selected Customer: {this.state.selectedCustomer.name}</p>
           {rentalButton}
